@@ -6,7 +6,8 @@
 {{-- <button><a href="{{ route('etudiant') }}">new etudiant</a></button> --}}
 <ul>
     @foreach($etudiant as $item)
-    <li>{{ $item }}</li>
+    <li>{{ $item->noms }}</li>
+    <li>{{ $item->age }}</li>
     @endforeach
 </ul>
 @endsection

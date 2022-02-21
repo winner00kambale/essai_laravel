@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\EtudiantController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,18 +25,11 @@ Route::get('/master', function(){
     return view('master');
     });
 
-    Route::post('/store-etudiant', function(Request $request){
-        
-        \DB::table('etudiants')->insert([
-            'noms' => $request->noms,
-            'age' => $request->age,
-        ]);
-        })->name('store-etudiant');
+//Insertio avec controller
+    Route::post('/store-etudiant',[EtudiantController::class,'store'])->name('store-etudiant');
+//Affichage avec controller
+    Route::get('/etudiant',[EtudiantController::class,'index'] );
 
-    Route::get('/etudiant', function(){
-        $etudiant = ['toto','titi','popo','dodo'];
-        return view('etudiant',compact('etudiant'));
-        });
 
         Route::get('/payement', function(){
             return view('payement');
