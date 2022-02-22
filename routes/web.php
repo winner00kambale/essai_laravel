@@ -25,10 +25,14 @@ Route::get('/master', function(){
     return view('master');
     });
 
-//Insertio avec controller
+//Insertion avec controller
     Route::post('/store-etudiant',[EtudiantController::class,'store'])->name('store-etudiant');
 //Affichage avec controller
-    Route::get('/etudiant',[EtudiantController::class,'index'] );
+    Route::get('/etudiant',[EtudiantController::class,'index']);
+
+//modification avec controller
+    Route::get('/edit-etudiant/{id}',[EtudiantController::class,'edit'])->name('edit-etudiant');
+    Route::post('/update-etudiant',[EtudiantController::class,'update'])->name('update-etudiant');
 
 
         Route::get('/payement', function(){

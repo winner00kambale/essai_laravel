@@ -16,4 +16,12 @@ class EtudiantController extends Controller
             'age' => $request->age,
         ]);
     }
+    public function edit($id){
+        $data = \DB::select("SELECT * FROM etudiants WHERE id = ?",[$id]);
+        $etudiant = $data[0];
+        return view('edit',compact('etudiant'));
+    }
+    public function update(Request $request){
+        \DB::update('UPDATE etudiants set noms = ?,age = ? where id = ?',[$request->noms,$request->age,$request->id]);
+    }
 }
