@@ -3,6 +3,9 @@
 @section('contenu')
 <div class="container">
 <p>hello from etudiant</p>
+@if(\Session::has('message'))
+<div class="alert alert-primary">{{ \Session::get('message') }}</div>
+@endif
 <a href="{{ route('etudiant') }}" class="btn btn-info">New Etudiant</a>
 <table class="table table-striped table-bordered table-hover mt-2">
 <thead>
@@ -21,7 +24,7 @@
         <td>{{ $item->age }}</td>
         <td>
             <a href="{{ '/edit-etudiant/'.$item->id }}">edit</a> | 
-            <a href="#">delete</a>
+            <a href="{{ '/delete-etudiant/'.$item->id }}">delete</a>
         </td>
     </tr>
     @endforeach

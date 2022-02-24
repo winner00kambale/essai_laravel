@@ -1,6 +1,14 @@
 @extends('layouts.master')
 @section('contenu')
 <div class="container">
+    {{-- message de confirmation d'insertion --}}
+    @if($errors->any())  
+        <div class="alert alert-danger">
+        @foreach ($errors->all() as $item)
+            <p>{{ $item }}</p>
+        @endforeach
+        </div>
+    @endif
     <form method="post" action="{{ route('store-etudiant') }}">
         @csrf
         <input type="text" name="noms" placeholder="saisir votre  nom">

@@ -28,12 +28,14 @@ Route::get('/master', function(){
 //Insertion avec controller
     Route::post('/store-etudiant',[EtudiantController::class,'store'])->name('store-etudiant');
 //Affichage avec controller
-    Route::get('/etudiant',[EtudiantController::class,'index']);
+    Route::get('/etudiant',[EtudiantController::class,'index'])->name('aficher_etudiant');
 
 //modification avec controller
     Route::get('/edit-etudiant/{id}',[EtudiantController::class,'edit'])->name('edit-etudiant');
     Route::post('/update-etudiant',[EtudiantController::class,'update'])->name('update-etudiant');
-
+//Suppression avec controller
+    Route::get('/delete-etudiant/{id}',[EtudiantController::class,'destroy'])->name('delete-etudiant');
+    
 
         Route::get('/payement', function(){
             return view('payement');
