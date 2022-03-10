@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Animal;
 
 use App\Http\Controllers\EtudiantController;
+use App\Http\Controllers\UsersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +16,9 @@ use App\Http\Controllers\EtudiantController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/',function(){
+    return view('welcome');
+});
 Route::get('/animal', function () {
     $data = Animal::all();
     dd($data);
@@ -30,9 +34,9 @@ Route::post('/animals', function(Request $request){
 
 
 
-Route::get('/', function () {
-    return view('animal');
-});
+// Route::get('/', function () {
+//     return view('animal');
+// });
 Route::get('/toto', function(){
 return view('toto');
 });
@@ -57,5 +61,8 @@ Route::get('/master', function(){
     // Route::get('/new-etudiant', function(){
     //     return view('new_etudiants');
     // })->name('etudiant');
+
+    Route::get('/login',[UsersController::class,'index'])->name('login.index');
+    Route::post('/user',[UsersController::class,'authenticate'])->name('login.authenticate');
 
     
