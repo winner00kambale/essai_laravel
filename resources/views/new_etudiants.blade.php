@@ -9,7 +9,7 @@
         @endforeach
         </div>
     @endif
-    <form id="monformulaire">
+    <form method="POST" action="{{ route('new_etudiants') }}">
         @csrf
         <input type="text" name="noms" id="noms" placeholder="saisir votre  nom">
         <input type="number" name="age" id="age" min="0" step="1" placeholder="saisir l'age">
@@ -24,7 +24,7 @@
             event.preventDefault();
 
             $.ajax({
-                url : '{{ route("store-etudiant") }}',
+                url : '{{ route("new_etudiants") }}',
                 method : 'POST',
                 data : new FormData(this),
                 processData : false,
